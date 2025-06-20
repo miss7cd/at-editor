@@ -1,0 +1,13 @@
+export declare const DATA_ELEMENT = "data-element";
+export declare const DATA_ID = "data-id";
+export declare const ROOT = "root";
+export declare const ROOT_SELECTOR = "[data-element=\"root\"]";
+export declare const UI = "ui";
+export declare const UI_SELECTOR = "[data-element=\"ui\"]";
+export declare const EDITABLE = "editable";
+export declare const EDITABLE_SELECTOR = "[data-element=\"editable\"]";
+export declare const DATA_TRANSIENT_ATTRIBUTES = "data-transient-attributes";
+export declare const DATA_TRANSIENT_ELEMENT = "data-transient-element";
+export declare const ENGINE_CLASS_NAME = "am-engine";
+export declare const ENGINE_MOBILE_CLASS_NAME = "am-engine-mobile";
+export declare const VIEW_CLASS_NAME = "am-engine-view";

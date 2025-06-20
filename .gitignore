@@ -5,7 +5,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Build outputs
-dist/
 build/
 lib/
 es/
@@ -93,4 +92,4 @@ pids
 *.pid.lock
 
 # TypeScript cache
-*.tsbuildinfo 
+*.tsbuildinfo

@@ -1,0 +1,36 @@
+import { BlockModelInterface, CardModelInterface, ClipboardInterface, CommandInterface, ConversionInterface, EditorInterface, EditorOptions, EventInterface, EventListener, InlineModelInterface, LanguageInterface, MarkModelInterface, NodeIdInterface, NodeInterface, NodeModelInterface, PluginModelInterface, RangeInterface, SchemaInterface, Selector } from '../types';
+import { ListModelInterface } from '../types/list';
+declare class Editor<T extends EditorOptions = EditorOptions> implements EditorInterface<T> {
+    readonly kind: 'editor' | 'engine' | 'view';
+    options: T;
+    readonly container: NodeInterface;
+    language: LanguageInterface;
+    root: NodeInterface;
+    card: CardModelInterface;
+    plugin: PluginModelInterface;
+    node: NodeModelInterface;
+    nodeId: NodeIdInterface;
+    list: ListModelInterface;
+    mark: MarkModelInterface;
+    inline: InlineModelInterface;
+    block: BlockModelInterface;
+    event: EventInterface;
+    schema: SchemaInterface;
+    conversion: ConversionInterface;
+    command: CommandInterface;
+    clipboard: ClipboardInterface;
+    _scrollNode: NodeInterface | null;
+    get scrollNode(): NodeInterface | null;
+    constructor(selector: Selector, options?: EditorOptions);
+    init(): void;
+    setScrollNode(node?: HTMLElement): void;
+    on<R = any, F extends EventListener<R> = EventListener<R>>(eventType: string, listener: F, options?: boolean | AddEventListenerOptions): this;
+    off(eventType: string, listener: EventListener): this;
+    trigger<R = any>(eventType: string, ...args: any): R;
+    messageSuccess(type: string, message: string, ...args: any[]): void;
+    messageError(type: string, error: string, ...args: any[]): void;
+    messageConfirm(type: string, message: string, ...args: any[]): Promise<boolean>;
+    getSelectionData(range?: RangeInterface): Record<'html' | 'text', string> | undefined;
+    destroy(): void;
+}
+export default Editor;

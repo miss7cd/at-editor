@@ -1,0 +1,14 @@
+export declare const CARD_TAG = "card";
+export declare const CARD_KEY = "data-card-key";
+export declare const READY_CARD_KEY = "data-ready-card";
+export declare const CARD_TYPE_KEY = "data-card-type";
+export declare const CARD_VALUE_KEY = "data-card-value";
+export declare const CARD_ELEMENT_KEY = "data-card-element";
+export declare const CARD_LOADING_KEY = "data-card-loading";
+export declare const CARD_EDITABLE_KEY = "data-card-editable";
+export declare const CARD_SELECTOR: string;
+export declare const READY_CARD_SELECTOR: string;
+export declare const CARD_LEFT_SELECTOR: string;
+export declare const CARD_CENTER_SELECTOR: string;
+export declare const CARD_RIGHT_SELECTOR: string;
+export declare const TRIGGER_CARD_ID = "trigger-card-id";

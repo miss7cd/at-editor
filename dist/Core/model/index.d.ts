@@ -1,0 +1,41 @@
+import { CardInterface, EngineInterface } from '../../types';
+import { DOMNode } from './dom';
+import { Element } from './element';
+import { Text } from './text';
+import { CursorAttribute, CollaborationMember } from './member';
+import { Mutation } from './mutation';
+import { Node } from './node';
+import { Operation } from './operation';
+import { Path } from './path';
+import ModelSelection from './selection';
+import './index.css';
+export interface Model {
+    root: Element;
+    mutation: Mutation;
+    selection: ModelSelection;
+    member: ReturnType<typeof CollaborationMember.fromEngine>;
+    resetRoot(): void;
+    onChange(fn: (operations: Operation[], root: Element) => void): void;
+    offChange(fn: (operations: Operation[], root: Element) => void): void;
+    emitChange(operations: Operation[]): void;
+    onSelectionChange(fn: (attribute: CursorAttribute) => void): void;
+    offSelectionChange(fn: (attribute: CursorAttribute) => void): void;
+    findNode(path: Path): Node | undefined;
+    apply(operations: Operation[]): void;
+    applyRemote(operations: Operation[]): void;
+    drawCursor(attributes: CursorAttribute[] | CursorAttribute): void;
+    toDOM(node?: Node): DOMNode;
+    toHTML(node?: Node): string;
+    toValue(node?: Node): string;
+    toValueAsync(node?: Node, callback?: (name: string, card?: CardInterface, ...args: any) => boolean | number | void): Promise<string>;
+    toText(node?: Node, intoCard?: boolean): string;
+    destroy(): void;
+}
+export declare const Model: {
+    from: (engine: EngineInterface, root?: Element) => Model;
+    destroy: (engine: EngineInterface) => void;
+};
+export { Node, Element, Path, Text, CollaborationMember };
+export type { CursorAttribute };
+export * from './utils';
+export * from './operation';
