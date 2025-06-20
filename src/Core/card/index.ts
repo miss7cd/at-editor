@@ -252,6 +252,7 @@ class CardModel implements CardModelInterface {
                 return this.find<E, T>(domNode)
             }
         }
+        return undefined
     }
 
     // 插入Card

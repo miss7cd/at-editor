@@ -21,6 +21,8 @@ class Down {
             change.range.select(range)
             return false
         }
+        // 添加默认返回值
+        return null;
     }
 
     inline (component: CardInterface, event: KeyboardEvent) {
