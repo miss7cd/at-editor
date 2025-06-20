@@ -1,0 +1,40 @@
+{
+	"compilerOptions": {
+		"target": "es2020",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"importHelpers": true,
+		"jsx": "react",
+		"allowJs": true,
+		"skipLibCheck": true,
+		"experimentalDecorators": true,
+		"noImplicitReturns": true,
+		"declaration": true,
+		"declarationDir": "./dist",
+		"outDir": "./dist",
+		"esModuleInterop": true,
+		"sourceMap": true,
+		"baseUrl": "./",
+		"strict": true,
+		"allowSyntheticDefaultImports": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": false
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"lib",
+		"es",
+		"dist",
+		"docs-dist",
+		"typings",
+		"**/__test__",
+		"test",
+		"fixtures",
+		"examples",
+		"*.config.js"
+	]
+}

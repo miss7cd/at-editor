@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtEditor - 基础示例</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .editor-container {
+            padding: 20px;
+            min-height: 400px;
+        }
+        
+        #editor {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-height: 300px;
+            padding: 15px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .toolbar {
+            background: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .toolbar button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .toolbar button:hover {
+            background: #e9ecef;
+        }
+        
+        .toolbar button.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        
+        .output {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .output h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .output pre {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AtEditor - 富文本编辑器</h1>
+            <p>一个现代化的、可扩展的富文本编辑器框架</p>
+        </div>
+        
+        <div class="toolbar">
+            <button id="bold" title="粗体 (Ctrl+B)">粗体</button>
+            <button id="italic" title="斜体 (Ctrl+I)">斜体</button>
+            <button id="underline" title="下划线 (Ctrl+U)">下划线</button>
+            <button id="undo" title="撤销 (Ctrl+Z)">撤销</button>
+            <button id="redo" title="重做 (Ctrl+Y)">重做</button>
+            <button id="getValue">获取内容</button>
+            <button id="setValue">设置内容</button>
+        </div>
+        
+        <div class="editor-container">
+            <div id="editor" contenteditable="true">
+                <p>欢迎使用 AtEditor！</p>
+                <p>这是一个功能强大的富文本编辑器，支持：</p>
+                <ul>
+                    <li>文本格式化（粗体、斜体、下划线等）</li>
+                    <li>撤销/重做功能</li>
+                    <li>快捷键支持</li>
+                    <li>插件系统</li>
+                    <li>卡片系统</li>
+                </ul>
+                <p>开始编写您的内容吧！</p>
+            </div>
+        </div>
+        
+        <div class="output">
+            <h3>编辑器内容输出：</h3>
+            <pre id="output">点击"获取内容"按钮查看编辑器内容</pre>
+        </div>
+    </div>
+
+    <script type="module">
+        // 这里将引入 AtEditor
+        // import { Editor } from '../dist/index.esm.js';
+        
+        // 模拟 AtEditor 功能
+        class SimpleEditor {
+            constructor(selector) {
+                this.element = document.querySelector(selector);
+                this.init();
+            }
+            
+            init() {
+                this.setupToolbar();
+                this.setupEvents();
+            }
+            
+            setupToolbar() {
+                const buttons = {
+                    bold: () => document.execCommand('bold'),
+                    italic: () => document.execCommand('italic'),
+                    underline: () => document.execCommand('underline'),
+                    undo: () => document.execCommand('undo'),
+                    redo: () => document.execCommand('redo'),
+                    getValue: () => this.getValue(),
+                    setValue: () => this.setValue()
+                };
+                
+                Object.entries(buttons).forEach(([id, handler]) => {
+                    const button = document.getElementById(id);
+                    if (button) {
+                        button.addEventListener('click', handler);
+                    }
+                });
+            }
+            
+            setupEvents() {
+                // 监听键盘快捷键
+                this.element.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey || e.metaKey) {
+                        switch (e.key.toLowerCase()) {
+                            case 'b':
+                                e.preventDefault();
+                                document.execCommand('bold');
+                                break;
+                            case 'i':
+                                e.preventDefault();
+                                document.execCommand('italic');
+                                break;
+                            case 'u':
+                                e.preventDefault();
+                                document.execCommand('underline');
+                                break;
+                            case 'z':
+                                if (e.shiftKey) {
+                                    e.preventDefault();
+                                    document.execCommand('redo');
+                                } else {
+                                    e.preventDefault();
+                                    document.execCommand('undo');
+                                }
+                                break;
+                        }
+                    }
+                });
+                
+                // 监听内容变化
+                this.element.addEventListener('input', () => {
+                    this.updateOutput();
+                });
+            }
+            
+            getValue() {
+                const content = this.element.innerHTML;
+                document.getElementById('output').textContent = content;
+                return content;
+            }
+            
+            setValue() {
+                const newContent = prompt('请输入新的内容（HTML格式）：');
+                if (newContent !== null) {
+                    this.element.innerHTML = newContent;
+                    this.updateOutput();
+                }
+            }
+            
+            updateOutput() {
+                document.getElementById('output').textContent = this.element.innerHTML;
+            }
+        }
+        
+        // 初始化编辑器
+        const editor = new SimpleEditor('#editor');
+        
+        // 显示初始内容
+        editor.updateOutput();
+    </script>
+</body>
+</html> 
