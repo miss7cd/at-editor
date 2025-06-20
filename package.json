@@ -1,6 +1,6 @@
 {
   "name": "at-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A modern, extensible rich text editor framework with plugin architecture and card system",
   "type": "module",
   "main": "dist/index.js",
@@ -12,14 +12,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run lint && npm run test"
+    "dev": "rollup -c -w"
   },
   "repository": {
     "type": "git",
@@ -41,8 +34,6 @@
   },
   "homepage": "https://github.com/miss7cd/at-editor#readme",
   "dependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.29.0",
     "colord": "^2.9.3",
     "copy-to-clipboard": "^3.3.3",
     "diff-match-patch": "^1.0.5",
@@ -60,13 +51,7 @@
     "@types/is-hotkey": "^0.1.2",
     "@types/lodash": "^4.14.178",
     "@types/markdown-it": "^12.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.34.1",
-    "@typescript-eslint/parser": "^8.34.1",
-    "eslint": "^9.29.0",
-    "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-prettier": "^5.5.0",
     "postcss": "^8.5.6",
-    "prettier": "^3.0.0",
     "rollup": "^3.0.0",
     "rollup-plugin-dts": "^5.0.0",
     "rollup-plugin-postcss": "^4.0.2",

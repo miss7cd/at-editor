@@ -19,7 +19,13 @@
 		"allowSyntheticDefaultImports": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"noEmit": false
+		"noEmit": false,
+		"lib": [
+			"esnext",
+			"dom",
+			"dom.iterable",
+			"scripthost"
+		]
 	},
 	"include": [
 		"src/**/*"
@@ -30,7 +36,6 @@
 		"es",
 		"dist",
 		"docs-dist",
-		"typings",
 		"**/__test__",
 		"test",
 		"fixtures",
