@@ -1,7 +1,7 @@
 // @ts-check
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
-import tseslint from '@typescript-eslint/eslint-plugin';
+import tslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 
 const compat = new FlatCompat();
@@ -21,7 +21,7 @@ export default [
             },
         },
         plugins: {
-            '@typescript-eslint': tseslint,
+            '@typescript-eslint': tslint,
         },
         rules: {
             // 你可以在这里自定义规则

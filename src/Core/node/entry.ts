@@ -1022,6 +1022,7 @@ class NodeEntry implements NodeInterface {
                 }
                 i++
             }
+            return undefined
         }
         for (let i = 0; path[i] !== undefined;) {
             const childNode = getChildNode(path[i])

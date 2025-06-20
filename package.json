@@ -41,6 +41,8 @@
   },
   "homepage": "https://github.com/miss7cd/at-editor#readme",
   "dependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.29.0",
     "colord": "^2.9.3",
     "copy-to-clipboard": "^3.3.3",
     "diff-match-patch": "^1.0.5",

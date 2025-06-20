@@ -225,6 +225,7 @@ class Inline implements InlineModelInterface {
             } else {
                 started = true
             }
+            return undefined
         })
 
         const { anchor, focus } = selection
@@ -883,11 +884,7 @@ class Inline implements InlineModelInterface {
                                     isEnd = true
                                     return false
                                 }
-                                if (
-                                    nodeApi.isInline(child) &&
-                                    !child.attributes(CARD_KEY) &&
-                                    !child.attributes(CARD_ELEMENT_KEY)
-                                ) {
+                                if (nodeApi.isInline(child) && !child.attributes(CARD_KEY) && !child.attributes(CARD_ELEMENT_KEY)) {
                                     addNode(nodes, child)
                                 }
                             }
@@ -895,6 +892,7 @@ class Inline implements InlineModelInterface {
                             // 如果是开始节点，标记为开始
                             isBegin = true
                         }
+                        return undefined
                     })
                 })
             }
@@ -1086,7 +1084,7 @@ class Inline implements InlineModelInterface {
                     next.remove()
                 }
             })
-            return
+            return undefined
         }
         if (node.isCard()) return
         const nodeApi = editor.node
@@ -1143,6 +1141,7 @@ class Inline implements InlineModelInterface {
                 return element
             }
         }
+        return undefined
     }
 }
 

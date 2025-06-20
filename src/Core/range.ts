@@ -856,7 +856,7 @@ class Range implements RangeInterface {
                 node.parent()?.isRoot()
                     ? undefined
                     : this.filterPath(includeCardCursor),
-                (index, path, node) => {
+                (index: number, path: number[], node: NodeInterface) => {
                     // 找不到索引，就重置之前的位置
                     if (index === -1) {
                         rootBeginId = ''
@@ -868,6 +868,7 @@ class Range implements RangeInterface {
                         rootBeginIndex = path.length
                     }
                     path.unshift(index)
+                    return path
                 }
             )
             rootBeginIndex = path.length - rootBeginIndex
